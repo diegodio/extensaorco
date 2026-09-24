@@ -1,0 +1,80 @@
+/* Boletim+ | páginas da extensão (boas-vindas e histórico)
+   Mesmos tokens do painel de opções. */
+:root {
+  --papel: #fbfcfd;
+  --tinta: #1f2a33;
+  --tinta-suave: #5c6b77;
+  --linha: #dde3e8;
+  --azul: #1e88e5;
+  --verde: #2e7d32;
+  --vermelho: #d32f2f;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --papel: #1b2229;
+    --tinta: #e6ebef;
+    --tinta-suave: #9aa8b3;
+    --linha: #33404b;
+    --verde: #5cbf62;
+    --vermelho: #ef6b6b;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font: 15px/1.55 system-ui, "Segoe UI", Roboto, Ubuntu, sans-serif;
+}
+main { max-width: 760px; margin: 0 auto; padding: 0 20px 48px; }
+
+/* faixa do topo: uma linha de diário com as notas coloridas */
+.diario {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 56px);
+  align-items: end;
+  gap: 0 6px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 20px 14px;
+  border-bottom: 2px solid var(--azul);
+}
+.diario h1 { margin: 0; font-size: 26px; line-height: 1.15; }
+.diario p { margin: 4px 0 0; color: var(--tinta-suave); }
+.nota { text-align: center; font-variant-numeric: tabular-nums; }
+.nota span { display: block; font-size: 12px; color: var(--tinta-suave); }
+.nota b { font-size: 20px; }
+.nota.verde b { color: var(--verde); }
+.nota.vermelho b { color: var(--vermelho); }
+
+h2 { margin: 32px 0 8px; font-size: 18px; }
+p { margin: 0 0 10px; max-width: 64ch; }
+small, .suave { color: var(--tinta-suave); }
+a { color: var(--azul); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; border-radius: 3px; }
+
+button {
+  font: inherit;
+  padding: 6px 14px;
+  color: var(--tinta);
+  background: transparent;
+  border: 1px solid var(--linha);
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover { border-color: var(--tinta-suave); }
+button.perigo { color: var(--vermelho); border-color: currentColor; }
+
+kbd {
+  font: 13px/1 ui-monospace, "Cascadia Mono", monospace;
+  padding: 2px 6px;
+  border: 1px solid var(--linha);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+}
+
+@media (max-width: 520px) {
+  .diario { grid-template-columns: 1fr repeat(3, 40px); }
+  .diario h1 { font-size: 21px; }
+  .nota b { font-size: 16px; }
+}
